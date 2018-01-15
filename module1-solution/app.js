@@ -10,15 +10,16 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
 
   $scope.foodItems = "";
-  $scope.msgStyle = {
-        "color" : "green",
-        "border-style" : "solid",
-        "border-color" : "green"
-      };
 
   $scope.click = function() {
     $scope.msg = "";
     var [foods, empty] = getFoods($scope.foodItems);
+    $scope.msgStyle = {
+          "color" : "green",
+          "border-style" : "solid",
+          "border-color" : "green"
+        };
+
     if (foods == 0) {
       $scope.msg = "Please enter data first";
       $scope.msgStyle = {
@@ -33,6 +34,8 @@ function LunchCheckController($scope) {
     }
     if (empty > 0) {
       $scope.sidemsg = "Caution ! Empty items in menu, ignored !";
+    } else {
+      $scope.sidemsg = "";
     }
   };
 
